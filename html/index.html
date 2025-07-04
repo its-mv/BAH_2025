@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Moon</title>
+    <link rel="stylesheet" href="../html/style.css">
+</head>
+<body>
+    <header>
+        <nav class="navbar">
+            <nav class="navbar">
+                <div class="nav-left">
+                    <img src="../Assets/logo.png" alt="logo" />
+                </div>
+                <ul class="nav-list">
+                    <!-- <li><a class="logo" href="index.html">The MOONITORS</a></li> -->
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="index.html">3d Moon</a></li>
+                    <li><a href="about.html">About</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                </ul>
+                <div class="nav-right"></div> <!-- invisible spacer to balance the logo -->
+            </nav>
+  
+    </header>
+    <div class="container">
+        <div class="part1">
+            <h1>Discover the Wonders <br>of the Moon with<br>The MOONITORS</h1>
+            <p>Chart a journey beyond Earth with us.<br>Dive into lunar landscapes, decode moon mysteries,<br>and become a part of the next space frontier.
+            </p>
+        </div>
+        <div class="part2">
+            <div class="title"><h1>About the Moon</h1></div>
+            <div class="p1">
+                <div class="left">
+                    <h3>Unveiling the Moon's Mysteries</h3>
+                    <p>
+                    Dive into the intricate details of the moon's surface, from its cratered landscapes to its shimmering peaks.
+                    Witness the interplay of light and shadow as you navigate this captivating 3D world.
+                    </p>
+                    <a href="#">Uncover the Facts</a>
+                </div>
+                    <div class="right">
+                        <img class="img2" src="../Assets/pic2.webp" alt="pic2" />
+                    </div>
+                </div>
+                <div class="p2">
+                <div class="left">
+                    <img class="img3" src="../Assets/pic3.png" alt="pic3" />
+                </div>
+                <div class="right">
+                    <h3>Discover the Beauty</h3>
+                    <p>
+                    Witness the moon's ethereal glow as it casts its illumination across the vast expanse of space.
+                    Immerse yourself in the serene tranquility of this celestial wonder, where the boundaries between reality and imagination blur.
+                    </p>
+                    <a href="#">Explore Further</a>
+                </div>
+            </div>
+
+        </div>
+        <div class="part3">
+            <div class="left">
+
+            </div>
+            <div class="right">
+                <script type="module" src="https://unpkg.com/@splinetool/viewer@1.10.21/build/spline-viewer.js" async></script>
+                <spline-viewer hint loading-anim-type="spinner-small-dark" url="https://prod.spline.design/Ze0ziQUUm-l4RsFI/scene.splinecode"><img src="data:image/png;base64,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" alt="Spline preview" style="width: 100%; height: 100%;"/></spline-viewer>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
