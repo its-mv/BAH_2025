@@ -65,24 +65,155 @@ function previewImage(event) {
   const file = event.target.files[0];
   if (file) {
     const imageURL = URL.createObjectURL(file);
-        uploadedImage.src = imageURL;
-        runBtn.style.cursor = "pointer";
-        runBtn.disabled = false;
-        downloadBtn.disabled = false;
-      } else {
-        uploadedImage.src = defaultImagePath;
-        runBtn.disabled = true;
-      }
-    }
+    uploadedImage.src = imageURL;
+    runBtn.style.cursor = "pointer";
+    runBtn.disabled = false;
+    downloadBtn.disabled = false;
+  } else {
+    uploadedImage.src = defaultImagePath;
+    runBtn.disabled = true;
+  }
+}
+
+// ContactUs, AboutUs
+function toggleOverlay(id) {
+  const section = document.getElementById(id);
+  if (section.style.display === "none" || section.style.display === "") {
+    section.style.display = "block";
+    section.scrollIntoView({ behavior: "smooth" });
+  } else {
+    section.style.display = "none";
+  }
+}
+
+// color
+// const visibleSections = [];
+
+// function toggleOverlay(sectionId) {
+//   const section = document.getElementById(sectionId);
+//   const container = document.querySelector(".container");
+//   const footer = document.querySelector(".footer");
+
+//   const isVisible = section.style.display === "block";
+
+//   if (isVisible) {
+//     section.style.display = "none";
+//     const index = visibleSections.indexOf(sectionId);
+//     if (index !== -1) visibleSections.splice(index, 1);
+//     section.remove();
+//   } else {
+//     section.style.display = "block";
+
+//     if (!visibleSections.includes(sectionId)) {
+//       visibleSections.push(sectionId);
+//     }
+
+//     // Remove and Re-insert in correct order before footer
+//     visibleSections.forEach(id => {
+//       const sec = document.getElementById(id);
+//       sec.remove();
+//       container.insertBefore(sec, footer);
+//     });
+//   }
+
+//   // Apply alternating background styles
+//   visibleSections.forEach((id, index) => {
+//     const sec = document.getElementById(id);
+//     const isEven = (index + 1) % 2 === 0;
+//     sec.style.backgroundColor = isEven ? "#e8eefc" : "#4A5568";
+//     sec.style.color = isEven ? "#000" : "#fff";
+//   });
+
+//   // Scroll to visible one
+//   if (!isVisible) {
+//     section.scrollIntoView({ behavior: "smooth" });
+//   }
+// }
+// const visibleSections = [];
+
+// function toggleOverlay(sectionId) {
+//   const section = document.getElementById(sectionId);
+//   const container = document.querySelector(".container");
+//   const footer = document.querySelector(".footer");
+
+//   const isVisible = section.style.display === "block";
+
+//   if (isVisible) {
+//     section.style.display = "none";
+//     const index = visibleSections.indexOf(sectionId);
+//     if (index !== -1) visibleSections.splice(index, 1);
     
-    // Optional: disable button again if default image is shown (e.g., reload or reset)
-    window.addEventListener("DOMContentLoaded", () => {
-      if (uploadedImage.src.includes("uploadImg.png")) {
-        runBtn.disabled = true;
-      }
-    });
+//     section.remove();
+//   } else {
+//     section.style.display = "block";
+//     if (!visibleSections.includes(sectionId)) {
+//       visibleSections.push(sectionId);
+//     }
+
+//     // Re-insert all visible sections in order before footer
+//     visibleSections.forEach(id => {
+//       const sec = document.getElementById(id);
+//       sec.remove();
+//       container.insertBefore(sec, footer);
+//     });
+//   }
+
+//   // Apply alternating background and text/close-btn colors
+//   visibleSections.forEach((id, index) => {
+//     const sec = document.getElementById(id);
+//     const isEven = (index + 1) % 2 === 0;
+
+//     const bgColor = isEven ? "#e8eefc" : "#4A5568";
+//     const textColor = isEven ? "#1a1a1a" : "#eeeeee";
+
+//     sec.style.backgroundColor = bgColor;
+//     sec.style.color = textColor;
+
+//     // Update all text and button color inside section-box
+//     const closeBtn = sec.querySelector(".close-btn");
+//     if (closeBtn) {
+//       closeBtn.style.color = textColor;
+//     }
+
+//     const links = sec.querySelectorAll("a");
+//     links.forEach(link => {
+//       link.style.color = textColor;
+//     });
+//   });
+
+//   if (!isVisible) {
+//     section.scrollIntoView({ behavior: "smooth" });
+//   }
+// }
+
+// scrollbar
+// // Show button when scrolled down
+window.addEventListener("scroll", function () {
+  const scrollBtn = document.getElementById("scrollTopBtn");
+  if (document.body.scrollTop > 200 || document.documentElement.scrollTop > 200) {
+    scrollBtn.style.display = "block";
+  } else {
+    scrollBtn.style.display = "none";
+  }
+});
+
+// Scroll to top on click
+document.getElementById("scrollTopBtn").addEventListener("click", function () {
+  window.scrollTo({
+    top: 0,
+    behavior: "smooth"
+  });
+});
+
     
+// Optional: disable button again if default image is shown (e.g., reload or reset)
+window.addEventListener("DOMContentLoaded", () => {
+  if (uploadedImage.src.includes("uploadImg.png")) {
+    runBtn.disabled = true;
+  }
+});
     
+
     
 // image
 function previewImage(event) {
