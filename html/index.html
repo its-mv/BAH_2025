@@ -16,9 +16,10 @@
             <ul class="nav-list" id="nav-links">
                 <li><a href="index.html">Home</a></li>
                 <li><a href="#3dmoon">3d Moon</a></li>
+                <li><a href="#MoonScan">Moon Scan</a></li>
+                <li><a href="#MoonFact">Moon Fact</a></li>
                 <li><a href="about.html">About</a></li>
                 <li><a href="contact.html">Contact</a></li>
-                <li><a href="#MoonFact">Moon Fact</a></li>
             </ul>
         </nav>
   
@@ -74,7 +75,7 @@
                 </div>
                 <div id="3dmoon" class="right">
                     <script type="module" src="https://unpkg.com/@splinetool/viewer@1.10.22/build/spline-viewer.js"></script>
-                    <spline-viewer loading-anim-type="spinner-small-dark" url="https://prod.spline.design/UJ4wRhQBO79LgZbB/scene.splinecode"></spline-viewer>
+                    <spline-viewer loading-anim-type="spinner-small-light" url="https://prod.spline.design/UJ4wRhQBO79LgZbB/scene.splinecode"></spline-viewer>
                 </div>
             </div>
             <div class="moon-fact-wrapper">
@@ -85,7 +86,40 @@
             </div>
         </div>
         <div class="part4">
-            
+            <div id="MoonScan" class="title"><h1>Blunders and Landslides Founder</h1></div>
+            <div class="detection-container">
+                <!-- Left Side: Input -->
+                <div class="input-section">
+                    <h3>Input Image</h3>
+                    <div class="image-box" id="input-image-box">
+                        <img id="uploadedImage" src="../Assets/uploadImg.png" alt="Uploaded Image">
+                    </div>
+                    <div class="buttons-row">
+                        <label class="upload-btn">
+                            Upload Image
+                            <input type="file" id="imageUpload" accept="image/*" onchange="previewImage(event)" hidden />
+                        </label>
+                        <button id="downloadBtn">Download Image</button>
+                        </div>
+
+                        <div class="buttons">
+                        <button id="runDetectionBtn">Run Detection</button>
+                        </div>
+
+                </div>
+
+                <!-- Right Side: Output -->
+                <div class="output-section">
+                    <h3>Detected Output</h3>
+                    <div class="image-box" id="output-image-box">
+                    <img id="detectedImage" src="../Assets/genImg.png" alt="Detected Output" />
+                    </div>
+                    <div class="detection-details" id="detectionDetails">
+                        <h5>Details</h5><hr>
+                        <p id="detectionDetails">No Details Yet</p>
+                    </div>
+                </div>
+            </div>
         </div>
         <div class="footer">
             <div class="f1">
@@ -94,11 +128,16 @@
             </div>
             <div class="f2">
                 <h4>Quick Links</h4>
-                <p><a href="#">Home</p>
-                <p><a href="#3dmoon">3D Moon</p>
-                <p><a href="#MoonFact">Moon Fact</p>
-                <p><a href="#">About</p>
-                <p><a href="#">Contact</p>
+                <div class="quick-links-left">
+                    <p><a href="#">Home</a></p>
+                    <p><a href="#3dmoon">3D Moon</a></p>
+                    <p><a href="#MoonScan">Moon Scan</a></p>
+                    <p><a href="#MoonFact">Moon Fact</a></p>
+                </div>
+                <div class="quick-links-right">
+                    <p><a href="#">About</a></p>
+                    <p><a href="#">Contact</a></p>
+                </div>
             </div>
             <div class="f3">
                 <h4>Connect with Us</h4>

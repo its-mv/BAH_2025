@@ -37,7 +37,75 @@ window.addEventListener('DOMContentLoaded', () => {
     }, 1000); // Adjust delay if needed
 });
 
+// toggle menu 
 function toggleMenu() {
   const navLinks = document.getElementById("nav-links");
   navLinks.classList.toggle("show");
 }
+
+// scroll to top
+function scrollToTop() {
+  window.scrollTo({
+    top: 0,
+    behavior: "smooth"
+  });
+}
+
+
+// run detection button
+const uploadedImage = document.getElementById("uploadedImage");
+const imageUpload = document.getElementById("imageUpload");
+const runBtn = document.getElementById("runDetectionBtn");
+const downloadBtn = document.getElementById("downloadBtn");
+const defaultImagePath = "../Assets/uploadImg.png"; // Your default path
+runBtn.disabled = true;
+downloadBtn.disabled = true;
+runBtn.style.cursor = "not-allowed";
+function previewImage(event) {
+  const file = event.target.files[0];
+  if (file) {
+    const imageURL = URL.createObjectURL(file);
+        uploadedImage.src = imageURL;
+        runBtn.style.cursor = "pointer";
+        runBtn.disabled = false;
+        downloadBtn.disabled = false;
+      } else {
+        uploadedImage.src = defaultImagePath;
+        runBtn.disabled = true;
+      }
+    }
+    
+    // Optional: disable button again if default image is shown (e.g., reload or reset)
+    window.addEventListener("DOMContentLoaded", () => {
+      if (uploadedImage.src.includes("uploadImg.png")) {
+        runBtn.disabled = true;
+      }
+    });
+    
+    
+    
+// image
+function previewImage(event) {
+  const file = event.target.files[0];
+  const reader = new FileReader();
+  reader.onload = function () {
+    document.getElementById('uploadedImage').src = reader.result;
+  };
+  if (file) {
+    reader.readAsDataURL(file);
+  }
+}
+
+document.getElementById('runDetectionBtn').addEventListener('click', () => {
+  // Trigger Python API call here
+  // After response:
+  // document.getElementById('detectedImage').src = 'path/to/generated_image.png';
+  // document.getElementById('detectionDetails').innerText = 'Parsed details here...';
+});
+
+document.getElementById('downloadBtn').addEventListener('click', () => {
+  const link = document.createElement('a');
+  link.href = document.getElementById('detectedImage').src;
+  link.download = 'input_image.png';
+  link.click();
+});
