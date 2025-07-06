@@ -10,6 +10,11 @@ html {
   padding: 60px 30px;
   transition: background-color 0.5s ease; 
 }
+html, body {
+  width: 100%;
+  overflow-x: hidden;
+}
+
 
 /* Header */
 .navbar{
@@ -64,12 +69,15 @@ html {
     position: relative;
     height: 100vh;
     padding: 40px 5% !important;
-    width: 100%;
+    width: 100vw;
+    background-image: url("../Assets/pic1.webp");
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
     align-items: center;
-    background-image: url("../Assets/pic1.webp");
+    display: block;
+    padding: 0;
+    justify-content: flex-start;
 }
 .part1::after {
     content: "";
@@ -457,15 +465,20 @@ html {
     list-style: none;
 }
 .team-grid {
-  display: block;
+  display: grid;
   grid-template-columns: repeat(4, 1fr); /* 4 in a row by default */
   gap: 20px;
   padding: 0px 30px;
   margin-top: 20px;
+  width: 100vw;
+  max-width: 100% !important;
+  padding-left: 0 !important;
+  box-sizing: border-box; 
 }
 .team-member {
-  padding: 15px 20px;
+  padding: 15px 10px;
   margin: 10px;
+  width: 100%;
   border-radius: 10px;
   border: 1px solid #ccc;
   transition: transform 0.3s ease;
@@ -507,8 +520,15 @@ html {
 .footer {
   padding: 60px 30px;
   display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 20px;
   background-color: #4A5568;
-  height: auto;
+  /* height: auto; */
+}
+.footer > div {
+  flex: 1 1 22%;
+  min-width: 220px;
 }
 .f1, .f2,
 .f3, .f4{
@@ -548,6 +568,17 @@ html {
 }
 .footer hr{
   margin: 5px;
+}
+@media (max-width: 768px) {
+  .footer > div {
+    flex: 1 1 45%;
+  }
+}
+
+@media (max-width: 480px) {
+  .footer > div {
+    flex: 1 1 100%;
+  }
 }
 
 /* Scrollbar */
@@ -602,7 +633,10 @@ html {
   .nav-list.show {
     display: flex;
   }
-  
+
+  .part1{
+    height: max-content;
+  }
   .part1 h1 {
     font-size: 2rem;
     padding-top: 30%;
