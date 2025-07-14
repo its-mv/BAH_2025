@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Moonitors</title>
+    <!-- link for -->
+    <!-- <link rel="stylesheet" href="style.css"> -->
+    <!-- <link rel="icon" type="image/*" href="{{ url_for('static', filename='Assets/pic3.png') }}"> -->
+    <!-- <link rel="icon" href="{{ url_for('static', filename='Assets/pic3.png') }}" type="image/png">
+    <link rel="shortcut icon" href="{{ url_for('static', filename='Assets/pic3.png') }}" type="image/png"> -->
+    <link rel="icon" href="{{ url_for('static', filename='Assets/pic3.png') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <header>
+        <nav class="navbar" aria-label="Main Navigation">
+            <div class="nav-left">
+                <!-- <img src="../Assets/logo.png" alt="logo" /> -->
+                <img src="{{ url_for('static', filename='Assets/logo.png') }}" alt="logo">
+            </div>
+            <div class="toggle" onclick="toggleMenu()">&#9776;</div>
+            <ul class="nav-list" id="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="#3dmoon">3d Moon</a></li>
+                <li><a href="#MoonScan">Moon Scan</a></li>
+                <li><a href="#MoonFact">Moon Fact</a></li>
+                <!-- <li><a href="#" onclick="toggleOverlay('aboutOverlay')">About</a></li>
+                <li><a href="#" onclick="toggleOverlay('contactOverlay')">Contact</a></li> -->
+                <p><a href="#about">About</a></p>
+                <p><a href="#contactOverlay">Contact</a></p>
+            </ul>
+        </nav>
+  
+    </header>
+    <div class="container">
+        <div class="section-block part1">
+            <h1>Discover the Wonders <br>of the Moon with<br>The MOONITORS</h1>
+            <p>Chart a journey beyond Earth with us.<br>Dive into lunar landscapes, decode moon mysteries,<br>and become a part of the next space frontier.
+            </p>
+        </div>
+        <div class="section-block part2">
+            <div class="title"><h1>About the Moon</h1></div>
+            <div class="p1">
+                <div class="left">
+                    <h3>Unveiling the Moon's Mysteries</h3>
+                    <p>
+                    Dive into the intricate details of the moon's surface, from its cratered landscapes to its shimmering peaks.
+                    Witness the interplay of light and shadow as you navigate this captivating 3D world.
+                    </p>
+                    <a href="#">Uncover the Facts</a>
+                </div>
+                    <div class="right">
+                        <!-- <img class="img2" src="../Assets/pic2.webp" alt="pic2" /> -->
+                        <img class="img2" src="{{ url_for('static', filename='Assets/pic2.webp') }}" alt="logo">
+                    </div>
+                </div>
+                <div class="p2">
+                    <div class="left">
+                        <!-- <img class="img3" src="../Assets/pic3_1.png" alt="pic3" /> -->
+                        <img class="img3" src="{{ url_for('static', filename='Assets/pic3_1.png') }}" alt="logo">
+                    </div>
+                    <div class="right">
+                        <h3>Discover the Beauty</h3>
+                        <p>
+                        Witness the moon's ethereal glow as it casts its illumination across the vast expanse of space.
+                        Immerse yourself in the serene tranquility of this celestial wonder, where the boundaries between reality and imagination blur.
+                        </p>
+                        <a href="#">Explore Further</a>
+                    </div>
+            </div>
+        </div>
+        <div class="section-block part3">
+            <div class="title"><h1>3D Moon</h1></div>
+            <div class="p3">
+                <div class="left">
+                    <h3>Interact with the Moon</h3>
+                    <p class="moon-section-subtitle">Explore the rugged terrain, glimmering plains, and lunar secrets in full 3D.</p>
+                    <ul class="moon-features">
+                        <li>🌑 <strong>Lunar Landscape:</strong> Discover craters, maria, and mysterious shadows.</li>
+                        <li>🚀 <strong>Missions Archive:</strong> Relive Apollo and witness the Artemis future.</li>
+                        <li>🧠 <strong>Scientific Insights:</strong> Learn about moonquakes, gravity, and the lunar core.</li>
+                        <li>🌙 <strong>Real-time Phase:</strong> View the current moon phase live.</li>
+                        <li  id="MoonFact">📍 <strong>Landmarks:</strong> Spot famous sites like Tranquility Base & Tycho Crater.</li>
+                    </ul>
+                </div>
+                <div id="3dmoon" class="right">
+                    <script type="module" src="https://unpkg.com/@splinetool/viewer@1.10.22/build/spline-viewer.js"></script>
+                    <spline-viewer loading-anim-type="spinner-small-light" url="https://prod.spline.design/UJ4wRhQBO79LgZbB/scene.splinecode"></spline-viewer>
+                </div>
+            </div>
+            <div class="moon-fact-wrapper">
+                <div class="moon-facts-box">
+                    <h3>🌕 Moon Fact</h3>
+                    <p id="moon-fact">Loading a fascinating fact...</p>
+                </div>
+            </div>
+        </div>
+        <div class="section-block part4">
+            <div id="MoonScan" class="title"><h1>Boulders and Landslides Founder</h1></div>
+            <div class="detection-container">
+                <!-- Left Side: Input -->
+                <div class="input-section">
+                    <h3>Input Image</h3>
+                    <div class="image-box" id="input-image-box">
+                        <!-- <img id="uploadedImage" src="../Assets/uploadImg.png" alt="Uploaded Image"> -->
+                        <img id="uploadedImage" src="{{ url_for('static', filename='Assets/uploadImg.png') }}" alt="Uploaded Image">
+
+                    </div>
+                    <div class="buttons-row">
+                        <label class="upload-btn">
+                            Upload Image
+                            <input type="file" id="imageUpload" accept="image/*" onchange="previewImage(event)" hidden />
+                        </label>
+                        <button id="downloadBtn" disabled>Download Image</button>
+                        </div>
+
+                        <div class="buttons">
+                        <button id="runDetectionBtn">Run Detection</button>
+                        </div>
+
+                </div>
+
+                <!-- Right Side: Output -->
+                <div class="output-section">
+                    <h3>Detected Output</h3>
+                    <div class="image-box" id="output-image-box">
+                    <!-- <img id="detectedImage" src="../Assets/genImg.png" alt="Detected Output" /> -->
+                     <img id="detectedImage" src="{{ url_for('static', filename='Assets/genImg.png') }}" alt="Detected Output">
+                    </div>
+                    <div class="detection-details" id="detectionDetails">
+                        <h5>Details</h5><hr>
+                        <p id="detectionDetailsText">No Details Yet</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- ABOUT US Section -->
+        <div class="section-block" id="about">
+        <div class="section-box popup">
+            <!-- <button class="close-btn" onclick="toggleOverlay('about')">&times;</button> -->
+            <h1 class="title">About Us</h1>
+            <p >
+            Welcome to <strong>The MOONITORS</strong> — your gateway to the mysteries of the Moon. We're a team of space enthusiasts, developers, and researchers driven by a single vision: <em>making lunar science accessible, interactive, and inspiring for everyone</em>.
+            </p>
+            <p>
+            Our mission is to bridge the gap between space data and public understanding. With cutting-edge technology like 3D lunar modeling and image-based landslide detection, we bring the Moon closer to you — not just as a distant rock, but as a world full of wonder.
+            </p>
+            <h3>🔭 What We Do</h3>
+            <ul style="text-align: left;">
+            <li>✨ Create immersive 3D Moon explorations using Spline-based visuals</li>
+            <li>🧠 Detect and analyze lunar blunders & landslides using image AI</li>
+            <li>📚 Educate through fascinating moon facts and visual insights</li>
+            <li>🌍 Build awareness about past missions and future lunar explorations</li>
+            </ul>
+            <p>
+            We're not just a website — we’re a growing community of moon lovers, learners, and explorers. Whether you’re a student, a space nerd, or a curious dreamer, there's something here for you.
+            </p>
+        </div>
+        </div>
+
+        <!-- CONTACT US Section -->
+        <div class="section-block" id="contactOverlay">
+        <div class="section-box popup">
+            <!-- <button class="close-btn" onclick="toggleOverlay('contactOverlay')">&times;</button> -->
+            <h1 class="title">Contact Us</h1>
+            <p>
+            We'd love to hear from you! Whether you're curious about our lunar technology, want to collaborate, or just have a cool Moon fact to share — reach out anytime!
+            </p>
+            <!-- <h3>📬 Get in Touch</h3>
+            <ul style="text-align: left;">
+            <li>📧 Email: <a href="mailto:moonitors@spaceexplore.org">moonitors@spaceexplore.org</a></li>
+            <li>📍 Office: 402, Galaxy Space Hub, Science City Road, Ahmedabad, India</li>
+            <li>📞 Phone: +91-98765-43210</li>
+            </ul>
+            <h3>🌐 Connect With Us</h3>
+            <p>
+            <a href="#">🌕 Instagram</a> |
+            <a href="#">🐦 Twitter</a> |
+            <a href="#">📘 Facebook</a> |
+            <a href="#">💼 LinkedIn</a>
+            </p> -->
+            <h3>👩‍🚀 Meet Our Team</h3>
+            <div class="team-grid">
+            <div class="team-member">
+                <h4>Meet Gajjar</h4>
+                <p>Email: <a href="mailto:meetgajjar@example.com">meetgajjar@example.com</a></p>
+                <p><strong>Role:</strong> Website & Backend Development</p>
+                <p>Led the complete frontend and backend development of the platform. Ensured seamless UI/UX and functional integration.</p>
+            </div>
+            <div class="team-member">
+                <h4>Krishna Patel</h4>
+                <p>Email: <a href="mailto:krishnapatel@example.com">krishnapatel@example.com</a></p>
+                <p><strong>Role:</strong> Boulders & Landslide Detection</p>
+                <p>Built Python-based detection systems and created comprehensive documentation for the project.</p>
+            </div>
+            <div class="team-member">
+                <h4>Aditi Lakhataria</h4>
+                <p><strong>Role:</strong> Artificial Intelligence</p>
+                <p>Email: <a href="mailto:aditi.l@example.com">aditi.l@example.com</a></p>
+                <p>Implemented the AI logic that powers moon facts and intelligent insights across the site.</p>
+            </div>
+            <div class="team-member">
+                <h4>Khushi Shah</h4>
+                <p>Email: <a href="mailto:khushishah@example.com">khushishah@example.com</a></p>
+                <p><strong>Role:</strong> Documentation</p>
+                <p>Created clear and structured documentation explaining the features, goals, and inner workings of the project.</p>
+            </div>
+            </div>
+            <h3>💡 Suggestions or Feedback?</h3>
+            <p>
+            We're always looking to improve. If you have suggestions, feedback, or ideas to expand The MOONITORS, don’t hesitate to drop us a message.
+            </p>
+        </div>
+        </div>
+
+        <div class="footer">
+            <div class="f1">
+                <!-- <img src="../Assets/logo.png" alt="logo"> -->
+                <img src="{{ url_for('static', filename='Assets/logo.png') }}" alt="logo">
+                <p class="copyright">&copy; 2025 The MOONITORS<br>All rights reserved.</p>
+            </div>
+            <div class="f2">
+                <h4>Quick Links</h4><hr>
+                <div class="quick-links-columns">
+                    <div class="quick-links-left">
+                        <p><a href="#">Home</a></p>
+                        <p><a href="#3dmoon">3D Moon</a></p>
+                        <p><a href="#MoonScan">Moon Scan</a></p>
+                        <p><a href="#MoonFact">Moon Fact</a></p>
+                    </div>
+                    <div class="quick-links-right">
+                        <!-- <p><a href="javascript:void(0)" onclick="toggleOverlay('about')">About</a></p>
+                        <p><a href="javascript:void(0)" onclick="toggleOverlay('contactOverlay')">Contact</a></p> -->
+                        <p><a href="#about">About</a></p>
+                        <p><a href="#contactOverlay">Contact</a></p>
+                    </div>
+                </div>
+            </div>
+            <div class="f3">
+                <h4>Connect with Us</h4><hr>
+                <p><a href="#">Facebook</p>
+                <p><a href="#">Twitter</p>
+                <p><a href="#">Instagram</p>
+                <p><a href="#">LinkedIn<p>
+            </div>
+            <div class="f4">
+                <h4>Legal</h4><hr>
+                <p><a href="#">Terms of Use</p>
+                <p><a href="#">Privacy Policy</p>
+                <p><a href="#">Sitemap</p>
+                <p><a href="#">Cookie Policy<p>
+            </div>
+        </div>
+    </div>
+    <button id="scrollTopBtn" title="Go to top">&#8679;</button>
+    <!-- <script src="/templates/script.js"></script> -->
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+</body>
+</html>
